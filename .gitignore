@@ -1,0 +1,4 @@
+__pycache__
+
+# Model files
+*.h5
