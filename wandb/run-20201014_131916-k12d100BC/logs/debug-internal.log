@@ -1,0 +1,62 @@
+2020-10-14 13:19:17,139 INFO    MainThread:3010 [internal.py:wandb_internal():62] W&B internal server running at pid: 3010
+2020-10-14 13:19:17,142 DEBUG   HandlerThread:3010 [handler.py:handle_request():54] handle_request: check_version
+2020-10-14 13:19:17,142 DEBUG   SenderThread:3010 [sender.py:send():88] send: header
+2020-10-14 13:19:17,144 DEBUG   SenderThread:3010 [sender.py:send():88] send: request
+2020-10-14 13:19:17,144 DEBUG   SenderThread:3010 [sender.py:send_request():97] send_request: check_version
+2020-10-14 13:19:17,143 INFO    WriterThread:3010 [datastore.py:open_for_write():76] open: wandb/run-20201014_131916-k12d100BC/run-k12d100BC.wandb
+2020-10-14 13:19:17,148 DEBUG   Thread-4  :3010 [connectionpool.py:_new_conn():813] Starting new HTTPS connection (1): pypi.org:443
+2020-10-14 13:19:17,189 DEBUG   Thread-4  :3010 [connectionpool.py:_make_request():393] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 50241
+2020-10-14 13:19:17,211 DEBUG   SenderThread:3010 [sender.py:send():88] send: run
+2020-10-14 13:19:17,213 INFO    SenderThread:3010 [sender.py:_maybe_setup_resume():269] checking resume status for None/dense-net-implementation/k12d100BC
+2020-10-14 13:19:17,216 DEBUG   SenderThread:3010 [connectionpool.py:_new_conn():813] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-10-14 13:19:17,299 DEBUG   SenderThread:3010 [connectionpool.py:_make_request():393] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-10-14 13:19:17,302 DEBUG   SenderThread:3010 [cmd.py:execute():719] Popen(['git', 'cat-file', '--batch-check'], cwd=/root/DenseNet-TensorFlow, universal_newlines=False, shell=None, istream=<valid stream>)
+2020-10-14 13:19:17,313 DEBUG   SenderThread:3010 [connectionpool.py:_new_conn():813] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-10-14 13:19:17,401 DEBUG   SenderThread:3010 [connectionpool.py:_make_request():393] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 400 None
+2020-10-14 13:19:17,403 ERROR   SenderThread:3010 [internal_api.py:execute():131] 400 response executing GraphQL.
+2020-10-14 13:19:17,404 ERROR   SenderThread:3010 [internal_api.py:execute():132] {"errors":[{"message":"run tnzl/dense-net-implementation/k12d100BC was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2020-10-14 13:19:18,211 INFO    HandlerThread:3010 [handler.py:finish():267] shutting down handler
+2020-10-14 13:19:18,211 INFO    WriterThread:3010 [datastore.py:close():257] close: wandb/run-20201014_131916-k12d100BC/run-k12d100BC.wandb
+2020-10-14 13:19:18,212 ERROR   MainThread:3010 [internal.py:wandb_internal():128] Thread SenderThread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/wandb/apis/normalize.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal_api.py", line 968, in upsert_run
+    response = self.gql(mutation, variable_values=variable_values, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/old/retry.py", line 96, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal_api.py", line 134, in execute
+    six.reraise(*sys.exc_info())
+  File "/usr/local/lib/python3.6/dist-packages/six.py", line 703, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal_api.py", line 128, in execute
+    return self.client.execute(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py", line 39, in execute
+    request.raise_for_status()
+  File "/usr/local/lib/python3.6/dist-packages/requests/models.py", line 941, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal_util.py", line 33, in run
+    self._run()
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal_util.py", line 60, in _run
+    self._process(record)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/internal.py", line 232, in _process
+    self._sm.send(record)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/sender.py", line 90, in send
+    send_handler(record)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/sender.py", line 360, in send_run
+    self._init_run(run, config_dict)
+  File "/usr/local/lib/python3.6/dist-packages/wandb/internal/sender.py", line 396, in _init_run
+    commit=repo.last_commit,
+  File "/usr/local/lib/python3.6/dist-packages/wandb/apis/normalize.py", line 26, in wrapper
+    raise CommError(err.response, err)
+wandb.errors.error.CommError: <Response [400]>
+2020-10-14 13:19:18,236 INFO    MainThread:3010 [internal.py:handle_exit():137] Internal process exited

@@ -3,7 +3,7 @@ from tensorflow.keras.layers import Dense, Conv2D, ReLU, BatchNormalization, Dro
 from tensorflow.keras.activations import softmax
 from tensorflow.keras.models import Model
 
-def get_model(growth_rate, layers_per_block, img_size=(32, 32, 3), compression_ratio=1.0, bottleneck_ratio=1.0, dropout=0.2, classes=100):
+def get_model(growth_rate, layers_per_block, classes, img_size=(32, 32, 3), compression_ratio=1.0, bottleneck_ratio=1.0, dropout=0.2):
   
   dense_blocks = len(layers_per_block)
 

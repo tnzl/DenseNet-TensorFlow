@@ -1,0 +1,24 @@
+{
+    "os": "Linux-4.19.112+-x86_64-with-Ubuntu-18.04-bionic",
+    "python": "3.6.9",
+    "heartbeatAt": "2020-10-14T12:15:35.416808",
+    "startedAt": "2020-10-14T12:15:34.413807",
+    "docker": null,
+    "gpu": "Tesla T4",
+    "gpu_count": 1,
+    "cpu_count": 2,
+    "cuda": "10.1.243",
+    "args": [],
+    "state": "running",
+    "codePath": "train.py",
+    "program": "/root/DenseNet-TensorFlow/train.py",
+    "git": {
+        "remote": "https://github.com/tnzl/DenseNet-TensorFlow.git",
+        "commit": "5aa0870de91ed3f38e231cca467472ee031c63b5"
+    },
+    "email": null,
+    "root": "/root/DenseNet-TensorFlow",
+    "host": "b425a2785e7b",
+    "username": "root",
+    "executable": "/usr/bin/python3"
+}
